@@ -1,0 +1,6 @@
+# Postgres SQL
+SQL_DATABASE='coredb'
+SQL_USER='core'
+SQL_PASSWORD='wCh29&HE&T83'
+SQL_HOST=db
+SQL_PORT=5432

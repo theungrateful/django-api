@@ -1,12 +1,10 @@
 from rest_framework import serializers
+
+from core.abstract.serializers import AbstractSerializer
 from core.user.models import User
 
 
-class UserSerializers(serializers.ModelSerializer):
-    id = serializers.UUIDField(source='public_id', read_only=True, format='hex')
-    created = serializers.DateTimeField(read_only=True)
-    updated = serializers.DateTimeField(read_only=True)
-    
+class UserSerializers(AbstractSerializer):
     class Meta:
         model = User
         fields = [

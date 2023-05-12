@@ -4,6 +4,7 @@ from rest_framework.exceptions import ValidationError
 from core.abstract.serializers import AbstractSerializer
 from core.post.models import Post
 from core.user.models import User
+from core.user.serializers import UserSerializers
 
 
 class PostSerializer(AbstractSerializer):
@@ -11,7 +12,16 @@ class PostSerializer(AbstractSerializer):
         queryset=User.objects.all(), slug_field='public_id'
     )
     
-    def validate(self, value):
+    def update(self, instance, validated_data):
+        if not instance.edited:
+            validated_data['edited'] = True
+            
+        instance = super().update(instance, validated_data)
+        
+        return instance
+
+    
+    def validate_author(self, value):
         if self.context["request"].user != value:
             raise ValidationError("You can't a post for other user.")
         return value
@@ -30,9 +40,9 @@ class PostSerializer(AbstractSerializer):
         read_only_fields = ['edited']
         
     def to_representation(self, instance):
-        rep = seper().to_representation(instance)
-        author = User.objects.get_by_natural_key(
+        rep = super().to_representation(instance)
+        author = User.objects.get_object_by_public_id(
             rep['author'])
-        rep['author'] = UserSerializer(author).data
+        rep['author'] = UserSerializers(author).data
         
         return rep       

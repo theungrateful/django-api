@@ -64,6 +64,18 @@ class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
         related_name="liked_by"    
     )
     
+    def like(self, post):
+        """Like 'post' if it hasn't been done yet."""
+        return self.posts_like.add(post)
+    
+    def remove_like(self, post):
+        """Remove 'post' from liked posts."""
+        return self.posts_like.remove(post)
+    
+    def has_liked(self, post):
+        """Check if 'post' has been liked."""
+        return self.posts_like.filter(pk=post.pk).exists()
+        
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     

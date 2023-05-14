@@ -32,7 +32,6 @@ class PostSerializer(AbstractSerializer):
         
         return instance
 
-    
     def validate_author(self, value):
         if self.context["request"].user != value:
             raise ValidationError("You can't a post for other user.")
@@ -46,7 +45,7 @@ class PostSerializer(AbstractSerializer):
             'body',
             'edited',
             'liked',
-            'liked_count',
+            'likes_count',
             'created',
             'updated',
         )

@@ -7,7 +7,7 @@ data_user = {
     "email": "test_user@example.com",
     "first_name": "Test",
     "last_name": "User",
-    "password": "test_password",
+    "password": "test_password"
 }
 
 @pytest.fixture

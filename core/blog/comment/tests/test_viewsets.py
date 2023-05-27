@@ -93,7 +93,7 @@ class TestCommentView:
             self.endpoint + str(post.public_id) + '/comment/' + str(comment.public_id) + '/'
         )
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
-        
+
     
         
     

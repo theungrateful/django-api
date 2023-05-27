@@ -7,7 +7,7 @@ from core.user.models import User
 
 
 class UserViewSet(AbstractViewSet):
-    http_method_names = ('patch', 'get')
+    http_method_names = ('patch', 'get', 'post')
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializers
     

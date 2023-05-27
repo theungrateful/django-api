@@ -7,7 +7,7 @@ from core.fixtures.comment import comment
 
 class TestCommentView:
     # The comment resource is needed under the post resource
-    endpoint = '/api/post/'
+    endpoint = '/api/blog/post/'
     
     def test_list(self, client, user, post, comment):
         client.force_authenticate(user=user)

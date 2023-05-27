@@ -5,7 +5,7 @@ from core.fixtures.post import post
 
 
 class TestPostViewSet:
-    endpoint = '/api/post/'
+    endpoint = '/api/blog/post/'
     
     def test_list(self, client, user, post):
         client.force_authenticate(user=user)

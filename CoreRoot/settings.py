@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'core',
     'core.user',
     'core.auth',
-    'core.post',
-    'core.comment',
+    'core.blog.post',
+    'core.blog.comment',
     'rest_framework',
 ]
 

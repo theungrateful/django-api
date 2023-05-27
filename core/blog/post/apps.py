@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class CommentConfig(AppConfig):
+class PostConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'core.comment'
-    label = 'core_comment'
+    name = 'core.blog.post'
+    label = 'core_post'

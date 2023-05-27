@@ -4,8 +4,8 @@ from rest_framework.exceptions import ValidationError
 from core.abstract.serializers import AbstractSerializer
 from core.user.models import User
 from core.user.serializers import UserSerializers
-from core.comment.models import Comment
-from core.post.models import Post
+from core.blog.comment.models import Comment
+from core.blog.post.models import Post
 
 
 class CommentSerializer(AbstractSerializer):

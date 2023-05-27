@@ -5,8 +5,8 @@ from rest_framework import status
 
 from core.abstract.viewsets import AbstractViewSet
 from core.auth.permissions import UserPermission
-from core.post.models import Post
-from core.post.serializers import PostSerializer
+from core.blog.post.models import Post
+from core.blog.post.serializers import PostSerializer
 
 
 class PostViewSet(AbstractViewSet):

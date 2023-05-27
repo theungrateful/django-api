@@ -3,8 +3,8 @@ from core.user.viewsets import UserViewSet
 from core.auth.viewsets import RegisterViewSet
 from core.auth.viewsets.login import LoginViewSet
 from core.auth.viewsets import RefreshViewSet
-from core.comment.viewsets import CommentViewSet
-from core.post.viewsets import PostViewSet
+from core.blog.comment.viewsets import CommentViewSet
+from core.blog.post.viewsets import PostViewSet
 
 
 router = routers.SimpleRouter()

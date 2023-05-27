@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from core.abstract.viewsets import AbstractViewSet
-from core.comment.models import Comment
-from core.comment.serializers import CommentSerializer
+from core.blog.comment.models import Comment
+from core.blog.comment.serializers import CommentSerializer
 from core.auth.permissions import UserPermission
 
 

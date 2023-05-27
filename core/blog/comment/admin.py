@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.comment.models import Comment
+from core.blog.comment.models import Comment
 
 # Register your models here.
 

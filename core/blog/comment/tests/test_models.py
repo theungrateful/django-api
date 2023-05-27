@@ -2,7 +2,7 @@ import pytest
 
 from core.fixtures.post import post
 from core.fixtures.user import user
-from core.comment.models import Comment
+from core.blog.comment.models import Comment
 
 
 @pytest.mark.django_db

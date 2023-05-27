@@ -3,7 +3,7 @@ import pytest
 from core.fixtures.post import Post
 from core.fixtures.user import User
 
-from core.comment.models import Comment
+from core.blog.comment.models import Comment
 
 
 @pytest.fixture

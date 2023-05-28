@@ -4,7 +4,8 @@ import axios from "axios";
 
 function useUserActions() {
   const navigate = useNavigate();
-  const baseURL = process.env.REACT_APP_API_URL;
+  // const baseURL = process.env.REACT_APP_API_URL;
+  const baseURL = "http://localhost:8000/api"
 
   return {
     login,
@@ -58,7 +59,7 @@ function useUserActions() {
       .post(`${baseURL}/auth/logout/`, { refresh: getRefreshToken() })
       .then(() => {
         localStorage.removeItem("auth");
-        navigate("/login");
+        navigate("/login/");
       });
   }
 }

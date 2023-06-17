@@ -5,8 +5,13 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.http import Http404
 
+from core.abstract.models import (
+    AbstractModel,
+    AbstractManager
+)
+
     
-class UserManager(BaseUserManager):
+class UserManager(BaseUserManager, AbstractManager):
     def get_object_by_public_id(self, public_id):
         try:
             instance = self.get(public_id=public_id)
@@ -46,8 +51,7 @@ class UserManager(BaseUserManager):
         return user
     
     
-class User(AbstractBaseUser, PermissionsMixin):
-    public_id = models.UUIDField(db_index=True, unique=True, default=uuid.uuid4, editable=False)
+class User(AbstractModel, AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -55,9 +59,23 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField(auto_now_add=True)
+    post_liked = models.ManyToManyField(
+        "core_post.Post",
+        related_name="liked_by"    
+    )
     
+    def like(self, post):
+        """Like 'post' if it hasn't been done yet."""
+        return self.post_liked.add(post)
+    
+    def remove_like(self, post):
+        """Remove 'post' from liked posts."""
+        return self.post_liked.remove(post)
+    
+    def has_liked(self, post):
+        """Check if 'post' has been liked."""
+        return self.post_liked.filter(pk=post.pk).exists()
+        
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     
